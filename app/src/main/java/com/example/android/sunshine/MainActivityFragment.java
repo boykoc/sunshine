@@ -1,6 +1,7 @@
 package com.example.android.sunshine;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -101,12 +101,14 @@ public class MainActivityFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Context context = getActivity();
-                CharSequence text = mForecastAdapter.getItem(position).toString();
-                int duration = Toast.LENGTH_SHORT;
+                Context context = getActivity(); // Get the context
+                CharSequence forecast = mForecastAdapter.getItem(position).toString(); // Get the selected forecast
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                // Call an explicit intent to launch the detail activity.
+                Intent detailActivity = new Intent(context, DetailActivity.class);
+                detailActivity.putExtra(Intent.EXTRA_TEXT, forecast);
+                startActivity(detailActivity);
+
             }
         });
 
