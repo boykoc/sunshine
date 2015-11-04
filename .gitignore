@@ -1,7 +1,15 @@
+##Gradle-based build
 .gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
+build/
+gradle.properties
+local.properties
+project.properties
+build.xml
+ant.properties
+.idea/workspace.xml
+.idea/libraries
 .DS_Store
-/build
-/captures
+build
+captures
+
+
